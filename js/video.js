@@ -9,17 +9,16 @@ window.addEventListener("load", function() {
 //main function
 window.onload = function(){
 var video = document.querySelector("#player1");
-console.log('second load test')
+console.log('second load test');
+var volumeCurrent = 100;
 
 //play
 // 1. define variable
 var videoPlay = document.getElementById("play");
-var volumeCurrent = 100;
-var volumeDisplay = document.getElementById("volume");
 // 2. event
 videoPlay.addEventListener("click",function(){
 	video.play();
-	volumeDisplay.innerHTML = "100%"
+	volumeDisplay.innerHTML = volumeCurrent + "%";
 	console.log("Play Video");
 	console.log("Volume is "+ volumeCurrent +'%')
 	});
@@ -103,10 +102,13 @@ videoMute.addEventListener("click",function(){
 //volume slider
 // 1. define variables
 var volumeSlider = document.getElementById("slider");
+var volumeDisplay = document.getElementById("volume");
+
 // 2. event
 volumeSlider.addEventListener("input", function(){
 	volumeCurrent = document.getElementById("slider").value;
 	video.volume = volumeCurrent/100;
+	volumeDisplay.innerHTML = video.volume * 100 + '%';
 	document.getElementById("volume").innerHTML = volumeCurrent + "%";
 	console.log('Volume is ' + video.volume * 100 + '%');
 });
