@@ -14,10 +14,14 @@ console.log('second load test')
 //play
 // 1. define variable
 var videoPlay = document.getElementById("play");
+var volumeCurrent = 100;
+var volumeDisplay = document.getElementById("volume");
 // 2. event
 videoPlay.addEventListener("click",function(){
 	video.play();
+	volumeDisplay.innerHTML = "100%"
 	console.log("Play Video");
+	console.log("Volume is "+ volumeCurrent +'%')
 	});
 
 
@@ -62,7 +66,7 @@ var videoSkip = document.getElementById("skip");
 // 2. event
 videoSkip.addEventListener("click",function(){
 	console.log("Original location " + video.currentTime);
-	let timeNew = video.currentTime + 5;
+	let timeNew = video.currentTime + 10;
 	if(timeNew > video.duration){
 		video.currentTime = 0;
 		timeNew = 0;
@@ -99,13 +103,12 @@ videoMute.addEventListener("click",function(){
 //volume slider
 // 1. define variables
 var volumeSlider = document.getElementById("slider");
-var volumeCurrent = 100;
 // 2. event
 volumeSlider.addEventListener("input", function(){
 	volumeCurrent = document.getElementById("slider").value;
 	video.volume = volumeCurrent/100;
 	document.getElementById("volume").innerHTML = volumeCurrent + "%";
-	console.log('Volume is ' + video.volume + '%');
+	console.log('Volume is ' + video.volume * 100 + '%');
 });
 
 
@@ -128,3 +131,4 @@ videoOriginal.addEventListener("click", function(){
 
 })
 }
+
